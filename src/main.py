@@ -41,9 +41,20 @@ def main():
     print(sorted(g.degree(), key=lambda x: x[1], reverse=True)[:10])
     print('Weighted degree:')
     print(sorted(g.degree(weight='weight'), key=lambda x: x[1], reverse=True)[:10])
-    print('Betweeness centrality:')
-    betweeness_centrlity = nx.betweenness_centrality(g)
-    print(betweeness_centrlity)
+    # print('Betweeness centrality:')
+    # betweeness_centrlity = nx.betweenness_centrality(g)
+    # # print(betweeness_centrlity)
+    # pagerank = nx.pagerank(g)
+    # # print(pagerank)
+
+    # clustering = nx.clustering(g, weight='weight')
+    # print(clustering)
+
+    # eigen_centrality = nx.eigenvector_centrality(g)
+    # print(eigen_centrality)
+
+    closeness_centrality = nx.closeness_centrality(g)
+    print(closeness_centrality)
 
     # nodes
     nx.draw(g)
@@ -51,7 +62,7 @@ def main():
     # edges
 
     plt.axis('off')
-    plt.show() # display
+    # plt.show() # display
 
     # for node in g.nodes():
     #     print(node)

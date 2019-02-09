@@ -2,10 +2,19 @@ import json
 import itertools
 import networkx as nx
 import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.model_selection import train_test_split
 
 from data_ingestion import get_characters
 from data_ingestion import get_scenes
+def draw_graph(g):
+     # nodes
+    nx.draw(g)
 
+    # edges
+
+    plt.axis('off')
+    plt.show() # display
 
 def graph_creation(scenes):
     g = nx.Graph()
@@ -25,55 +34,69 @@ def graph_creation(scenes):
                     g.add_edge(interaction[0], interaction[1], weight=1)
     return g
     
+def add_attribute(dataset, new_attribute):
+    for k,v in new_attribute.items():
+        dataset[k] = dataset[k] + [v]
+    return dataset
 
+def prepare_dataset(g):
+    dataset = {}
+
+    characters = get_characters()
+    dataset = {}
+    degree = g.degree() 
+    for deg in degree:
+        dataset[deg[0]] = [deg[1]]
+
+    weighted_degree = g.degree(weight='weight')
+    for wd in weighted_degree:
+        dataset[wd[0]] = dataset[wd[0]] + [wd[1]]
+    # Node metrics of the graph
+    betweeness_centrlity = nx.betweenness_centrality(g)
+    pagerank = nx.pagerank(g)
+    clustering = nx.clustering(g, weight='weight')
+    eigen_centrality = nx.eigenvector_centrality(g)
+    closeness_centrality = nx.closeness_centrality(g)
+
+    dataset = add_attribute(dataset, betweeness_centrlity)
+    dataset = add_attribute(dataset, pagerank)
+    dataset = add_attribute(dataset, clustering)
+    dataset = add_attribute(dataset, eigen_centrality)
+    dataset = add_attribute(dataset, closeness_centrality)
+    
+    for ch in characters:
+        try:
+            if ch.get('killedBy'):
+                if ch['characterName'] == 'Jon Snow' or ch['characterName'] == 'Benjen Stark':
+                    # Corner cases
+                    dataset[ch['characterName']] = dataset[ch['characterName']] + [True]     
+                else:
+                    dataset[ch['characterName']] = dataset[ch['characterName']] + [False]
+            else:
+                dataset[ch['characterName']] = dataset[ch['characterName']] + [True]
+        except KeyError:
+            # Flashback characteers, not relevant etc.
+            pass
+    
+    to_remove = []
+    for k,v in dataset.items():
+        if len(v) != 8:
+            # Unknown fate, therefore not useful for model
+            to_remove.append(k)
+    for k in to_remove:
+        dataset.pop(k)
+
+
+    return dataset
 
 def main():
     scenes = get_scenes()
-
     g = graph_creation(scenes)
-    print('Vertexes: %s' % g.number_of_nodes())
-    print('Edges num: %s' % g.number_of_edges())
-    edges = g.edges.data('weight')
-    max_connection = sorted(edges, key=lambda x: x[2], reverse=True)[:10]
-    print('Connections:')
-    print(max_connection)
-    print('Degree:')
-    print(sorted(g.degree(), key=lambda x: x[1], reverse=True)[:10])
-    print('Weighted degree:')
-    print(sorted(g.degree(weight='weight'), key=lambda x: x[1], reverse=True)[:10])
-    # print('Betweeness centrality:')
-    # betweeness_centrlity = nx.betweenness_centrality(g)
-    # # print(betweeness_centrlity)
-    # pagerank = nx.pagerank(g)
-    # # print(pagerank)
 
-    # clustering = nx.clustering(g, weight='weight')
-    # print(clustering)
+    dataset = prepare_dataset(g)
 
-    # eigen_centrality = nx.eigenvector_centrality(g)
-    # print(eigen_centrality)
 
-    closeness_centrality = nx.closeness_centrality(g)
-    print(closeness_centrality)
+#    draw_graph(g)
 
-    # nodes
-    nx.draw(g)
-
-    # edges
-
-    plt.axis('off')
-    # plt.show() # display
-
-    # for node in g.nodes():
-    #     print(node)
-    # living = []
-    # dead = []
-    # for ch in characters:
-    #     if ch.get('killedBy'):
-    #         dead.append(ch)
-    #     else:
-    #         living.append(ch)
-    # print(len(scenes))
-    # print('Living: %s   Dead: %s' % (len(living), len(dead)))
 if __name__ == "__main__":
     main()

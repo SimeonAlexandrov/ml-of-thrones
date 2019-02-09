@@ -1,0 +1,50 @@
+[[1.0, 'Edmure Tully'], [0.9990173599737963, 'Meera Reed'], [0.9953271028037384, 'Euron Greyjoy'], [0.9919812896759105, 'Yohn Royce'], [0.9896632210736912, 'Lyanna Mormont'], [0.9634966378482228, 'Bianca'], [0.9531554977228367, 'Baby Sam'], [0.9382059800664452, 'Thoros of Myr'], [0.9216067379332685, 'Ellaria Sand'], [0.8991624790619765, 'Daario Naharis'], [0.8641231593038822, 'Brynden Tully'], [0.785643400595435, 'Bronn'], [0.7584476413516226, 'Qhono'], [0.7376220949814752, 'Ghost'], [0.7277556440903055, 'Hot Pie'], [0.7147292169713695, 'Melisandre'], [0.6330369357045144, 'Missandei'], [0.627744510978044, 'Podrick Payne'], [0.603494623655914, 'Gilly'], [0.6029411764705882, 'Eddison Tollett'], [0.5878064943671305, "Jaqen H'ghar"], [0.5542725173210161, 'The Night King'], [0.5398752871677059, 'Qyburn'], [0.5099316183653533, 'Gregor Clegane'], [0.42724252491694353, 'Drogon'], [0.41800327332242226, 'Grey Worm'], [0.36910016977928695, 'Rhaegal'], [0.36254071661237786, 'Brienne of Tarth'], [0.27922291735265065, 'Gendry'], [0.1738126649076517, 'Olyvar'], [0.1460328317373461, 'Samwell Tarly'], [0.12810327706057598, 'Yara Greyjoy'], [0.06838752933288636, 'Bobono'], [0.05640345056403451, 'Izembaro'], [0.031725477500809326, 'Tormund Giantsbane'], [0.016344229486324215, 'Lord Varys'], [0.006589785831960461, 'Theon Greyjoy'], [0.0036752422318743734, 'Arya Stark'], [0.003046716316858497, 'Davos Seaworth'], [0.0029980013324450365, 'Bran Stark'], [0.002385008517887564, 'Jorah Mormont'], [0.0013486176668914363, 'Sansa Stark'], [0.0, 'Jon Snow'], [0.0, 'Cersei Lannister'], [0.0, 'Jaime Lannister'], [0.0, 'Sandor Clegane'], [0.0, 'Tyrion Lannister'], [0.0, 'Daenerys Targaryen']]
+10 000 iterations random forest
+
+
+Name Grey Worm
+participated in 918 tests
+Voted for not alive 257
+Probability: 0.27995642701525053
+
+Name Arya Stark
+participated in 909 tests
+Voted for not alive 0
+Probability: 0.0
+
+
+Average accuracy: 0.706920138888888
+
+Character name   Probability
+Meera Reed   1.0
+Ellaria Sand   0.9365079365079365
+Daario Naharis   0.9364035087719298
+Qhono   0.7917133258678611
+Bronn   0.7767094017094017
+Melisandre   0.7160087719298246
+Missandei   0.5971143174250833
+Podrick Payne   0.545751633986928
+Gilly   0.527972027972028
+Eddison Tollett   0.5279069767441861
+Qyburn   0.5056689342403629
+Gregor Clegane   0.4442013129102845
+Drogon   0.305159165751921
+Grey Worm   0.27995642701525053
+Rhaegal   0.2093784078516903
+Brienne of Tarth   0.2
+Gendry   0.13131313131313133
+Samwell Tarly   0.022727272727272728
+Tormund Giantsbane   0.0022222222222222222
+Jon Snow   0.0
+Bran Stark   0.0
+Sansa Stark   0.0
+Arya Stark   0.0
+Theon Greyjoy   0.0
+Cersei Lannister   0.0
+Jaime Lannister   0.0
+Sandor Clegane   0.0
+Tyrion Lannister   0.0
+Daenerys Targaryen   0.0
+Jorah Mormont   0.0
+Lord Varys   0.0
+Davos Seaworth   0.0

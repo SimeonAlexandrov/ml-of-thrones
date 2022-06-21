@@ -34,7 +34,7 @@ menulibre==2.2.0
 netifaces==0.10.4
 networkx==2.2
 notify2==0.3
-numpy==1.16.1
+numpy==1.22.0
 oauth==1.0.1
 olefile==0.45.1
 pexpect==4.2.1
